@@ -1,0 +1,4 @@
+<?
+
+class Feed_Item {
+}
