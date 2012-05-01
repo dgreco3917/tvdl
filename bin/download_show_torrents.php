@@ -4,13 +4,14 @@ require_once( __DIR__ . '/../bootstrap.php');
 
 
 
-$insert_stmt = $dbh->prepare("INSERT INTO showlog (show_name, season, episode, air_date, download_date) VALUES ( :show_name, :season, :episode, :air_date, :download_date)");
+/* @TODO - abstract this out to an ORM */
+$insert_stmt = DB::getInstance()->prepare("INSERT INTO showlog (show_name, season, episode, air_date, download_date) VALUES ( :show_name, :season, :episode, :air_date, :download_date)");
 $insert_stmt->bindParam(':show_name', $show_name, PDO::PARAM_STR);
 $insert_stmt->bindParam(':season', $season, PDO::PARAM_INT);
 $insert_stmt->bindParam(':episode', $episode, PDO::PARAM_INT);
 $insert_stmt->bindParam(':air_date', $air_date, PDO::PARAM_STR);
 $insert_stmt->bindParam(':download_date', $download_date, PDO::PARAM_STR);
-$lookup_stmt = $dbh->prepare("
+$lookup_stmt = DB::getInstance()->prepare("
 	SELECT count(*) as ALREADY_HAVE 
 	FROM showlog
 	WHERE
@@ -27,8 +28,8 @@ $lookup_stmt->bindParam(':season', $season, PDO::PARAM_INT);
 $lookup_stmt->bindParam(':episode', $episode, PDO::PARAM_INT);
 
 
-
-foreach ( $dbh->query("SELECT name FROM showqueue WHERE active=1") as $show_list ) {
+/* @TODO - abstract this out to an ORM */
+foreach ( DB::getInstance()->query("SELECT name FROM showqueue WHERE active=1") as $show_list ) {
 	foreach ( $rss_feeds as $feed_class ) {
 		$feed = new $feed_class( $show_list['name'] );
 		print "checking feed - " . $feed->getName() . "\n";
@@ -68,14 +69,3 @@ foreach ( $dbh->query("SELECT name FROM showqueue WHERE active=1") as $show_list
 }
 
 
-
-/* TODO
-	Preferences for 720p, hdtv, etc
-	sources other than eztv ?
-	cleanup code, bootstrap, setup, abstract DB code
-	magnet links
-	possible auto-download torrent, or "launch" or XML to other torrent program
-	
-	movie "queue" - i.e. put a movie in the queue, when it becomes available, download
-
-*/

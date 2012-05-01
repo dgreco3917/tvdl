@@ -1,7 +1,8 @@
+use readbean fuse/models
+
 Preferences for 720p, hdtv, etc
-sources other than eztv ?
-cleanup code, bootstrap, setup, abstract DB code
-magnet links
-possible auto-download torrent, or "launch" or XML to other torrent program
+sources other than eztv,karmorra ?
+use thetvdb for show info, present list of available content, etc
+possible auto-download torrent, or "launch" or XML to other torrent program, magnet links
 movie "queue" - i.e. put a movie in the queue, when it becomes available, download
 
