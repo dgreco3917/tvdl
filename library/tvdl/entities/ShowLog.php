@@ -55,15 +55,31 @@ class ShowLog {
 		R::store( $bean );
 	}
 	
-	public static function retrieve ($search_options=array()) {
+	public static function retrieve ($search_options=array(), $start_where='') {
 		$where_data = array();
-		$where = " 1 ";
+		if ( strlen(trim($start_where)) > 0 ) {
+			$where = $start_where;
+		}
+		else {
+			$where = " 1 ";
+		}
 		if ( $search_options['show_name'] ) {
 			$where .= " AND show_name=? ";
 			$where_data[] = $search_options['show_name'];
 		}
+		if ( $search_options['episode'] ) {
+			$where .= " AND episode=? ";
+			$where_data[] = $search_options['episode'];
+		}
+		if ( $search_options['season'] ) {
+			$where .= " AND season=? ";
+			$where_data[] = $search_options['season'];
+		}
 		return R::find('showlog', $where, $where_data );
 	}
-
+	
+	public static function retrieveDownloaded ($search_options=array()) {
+		return ShowLog::retrieve($search_options, " download_date IS NOT NULL");		
+	}
 }
 
