@@ -1,4 +1,5 @@
 use readbean fuse/models
+global registry for settings
 
 Preferences for 720p, hdtv, etc
 sources other than eztv,karmorra ?
