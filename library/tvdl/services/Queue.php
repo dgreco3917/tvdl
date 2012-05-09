@@ -1,11 +1,28 @@
 <?
 
 class Queue {
+	private $feeds;
+	
+	public function __construct ( $feeds=array() ) {
+		if ( is_array($feeds) && count($feeds) ) {
+			$this->setFeeds($feeds);	
+		}
+	}
+	
+	public function setFeeds ( $feeds=array() ) {
+		if ( is_array($feeds) && count($feeds) ) {
+			$this->feeds = $feeds;
+		}
+		else {
+			throw new Exception("Please provide an array of feeds");
+		}
+	}
+	
 	public function listAvailable () {
 		$available = array();
 		foreach ( ShowQueue::retrieve() as $show_queue ) {
 			print "SQ- " . $show_queue->getShowName() . "\n";
-			foreach ( $GLOBALS['rss_feeds'] as $feed_class ) {
+			foreach ( $this->feeds as $feed_class ) {
 				$feed = new $feed_class( $show_queue->getShowName() );
 				print "checking feed - " . $feed->getName() . "\n";
 				foreach ( $feed->getItems() as $item ) {
@@ -34,7 +51,7 @@ class Queue {
 		foreach ( $downloads as $item ) {		
 			print "Downloading torrent:\n";
 			try {
-				$f = $item->getLink()->saveToFile(null, $fallback_torrent_dir);
+				$f = $item->getLink()->saveToFile(null, Config::get('fallback_torrent_dir'));
 			}
 			catch (Exception $e) {
 				continue;

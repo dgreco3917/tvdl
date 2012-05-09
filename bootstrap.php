@@ -1,5 +1,6 @@
 <?
 
+require('library/tvdl/Config.php');
 include('setup/config.php');
 
 require('library/tvdl/Link.php');
@@ -17,5 +18,5 @@ require_once('library/misc/simple_html_dom.php');
 
 
 require('library/redbean/rb.php');
-R::setup( $GLOBALS['DB_DSN'], $GLOBALS['DB_USER'], $GLOBALS['DB_PASSWORD'] );
+R::setup( Config::get('DB_DSN'), Config::get('DB_USER'), Config::get('DB_PASSWORD') );
 
