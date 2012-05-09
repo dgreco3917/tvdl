@@ -1,4 +1,5 @@
-controllers
+namespaces
+controllers/router/dispatchers (rest, cli, json, soap)
 ui
 tests
 
