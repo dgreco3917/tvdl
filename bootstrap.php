@@ -10,6 +10,7 @@ require('library/tvdl/feeds/karmorra.php');
 require('library/tvdl/models/ShowLog.php');
 require('library/tvdl/models/ShowQueue.php');
 require('library/tvdl/services/Queue.php');
+require('library/tvdl/services/Log.php');
 
 
 require_once('Zend/Feed/Rss.php');

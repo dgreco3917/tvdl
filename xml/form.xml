@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<items>
+<item type="label" label="Name"/>
+<item type="input" name="fname" bind="fname" label="First Name"/>
+<item type="input" name="lname" bind="lname" label="Last Name"/>
+<item type="label" label="Phones"/>
+<item type="input" bind="phone_1" label="Cell"/>
+<item type="input" bind="phone_2" label="Home"/>
+<item type="label" label="Internet"/>
+<item type="input" name="email" bind="email" label="Email"/>
+<item type="input" bind="homepage" label="Home Page"/>
+<item type="input" bind="skype" label="Skype"/>
+<item type="button" command="save" value="Submit"/>
+</items>

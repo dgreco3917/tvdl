@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+	<TITLE>TVDL Administration</TITLE>
+	<LINK rel="STYLSHEET" type="text/css" href="../dhtmlx.css" />
+	<SCRIPT src="../dhtmlx.js" type="text/javascript" />
+	<SCRIPT>
+		function buildInterface() {
+		}
+		dhtmlxEvent(window, "load", buildInterface);
+	</SCRIPT>
+</HEAD>
+<BODY>
+
+<div style="height: 250px;"><div id="menuObj"></div></div>
+<script>
+var menu = new dhtmlXMenuObject("menuObj");
+menu.setIconsPath("../imgs/");
+// initing;
+menu.addNewSibling(null, "file", "File", false);
+menu.addNewChild("file", 0, "new", "New", false, "new.gif");
+menu.addNewSeparator("new");
+menu.addNewChild("file", 2, "open", "Open", false, "open.gif");
+menu.addNewChild("file", 3, "save", "Save", false, "save.gif");
+menu.addNewChild("file", 4, "saveAs", "Save As...", true, null, "save_as_dis.gif");
+menu.addNewSeparator("saveAs");
+menu.addNewChild("file", 6, "print", "Print", false, "print.gif");
+menu.addNewChild("file", 7, "pageSetup", "Page Setup", true, null, "page_setup_dis.gif");
+menu.addNewSeparator("pageSetup");
+menu.addNewChild("file", 12, "close", "Close", false, "close.gif");
+menu.addNewSibling("file", "edit", "Edit", false);
+menu.addNewChild("edit", 0, "edit_undo", "Undo", false, "undo.gif");
+menu.addNewSibling("edit_undo", "edit_redo", "Redo", false, "redo.gif");
+menu.addNewSeparator("edit_redo", "sep_1");
+menu.addNewSibling("sep_1", "edit_select_all", "Select All", false, "select_all.gif");
+menu.addNewSeparator("edit_select_all", "sep_2");
+menu.addNewSibling("sep_2", "edit_cut", "Cut", false, "cut.gif");
+menu.addNewSibling("edit_cut", "edit_copy", "Copy", false, "copy.gif");
+menu.addNewSibling("edit_copy", "edit_paste", "Paste", false, "paste.gif");
+menu.addNewSibling("edit", "help", "Help", false);
+menu.addNewChild("help", 0, "about", "About...", false, "about.gif");
+menu.addNewChild("help", 1, "help2", "Help", false, "help.gif");
+menu.addNewChild("help", 2, "bugrep", "Bug Reporting", false, "bug_reporting.gif");
+</script>
+
+
+
+
+</BODY>
+</HTML>

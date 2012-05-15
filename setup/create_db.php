@@ -1,9 +1,9 @@
 <?
 
-include("config.php");
+require_once('bootstrap.php');
 
-touch("$db_path/tvshows.sdb");
-$dbh = new PDO("sqlite:$db_path/tvshows.sdb");
+touch("db/tvshows.sdb");
+$dbh = new PDO("sqlite:db/tvshows.sdb");
 $dbh->exec("
 CREATE TABLE IF NOT EXISTS
 showlog (
